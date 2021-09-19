@@ -1,0 +1,142 @@
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+    cursor: crosshair;
+}
+
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+
+h1 {
+    font-family: axia-stencil, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 5vw;
+}
+
+#character_justify {
+    position: relative;
+    width: 100%;
+    color: #5aa1e8;
+    padding: 0;
+}
+
+#character_justifyy {
+    position: relative;
+    width: 100%;
+    color: #5aa1e8;
+    padding: 0;
+}
+
+.runner {
+    position: fixed;
+    z-index: 50;
+    width: 30%;
+    height: 30px;
+    left: 5%;
+    bottom: 17%;
+    color: #ddd;
+
+    font-family: axia-stencil, sans-serif;
+    letter-spacing: 4px;
+    padding: 5px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.marquee-child {
+    display: block;
+    width: 1500%;
+    /* width of your text div */
+    height: 25px;
+    /* height of your text div */
+    position: absolute;
+    animation: marquee 60s linear infinite;
+    /* change 5s value to your desired speed */
+}
+
+.marquee-child:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+@keyframes marquee {
+    0% {
+        left: 100%;
+    }
+
+    100% {
+        left: -1500%;
+        /* same as your text width */
+    }
+}
+
+#starbaby {
+    z-index: 0;
+    position: fixed;
+    width: 60%;
+    height: 80%;
+    top: 10%;
+    left: 30%;
+}
+
+#title {
+    z-index: 999;
+    position: fixed;
+    width: 30%;
+    top: 5%;
+    height: 500px;
+    left: 5%;
+    border: 0px solid #ff0000;
+}
+
+#title h2 {
+    margin-top: 20px;
+    text-align: left;
+    color: white;
+    font-size: 2vw;
+    vertical-align: baseline;
+}
+
+#title h2:hover {
+    text-align: left;
+    color: #aaa;
+    font-size: 2vw;
+    vertical-align: baseline;
+}
+
+#time {
+    z-index: 998;
+    position: fixed;
+    width: 30%;
+    bottom: 2%;
+    height: auto;
+    left: 5%;
+    border: 0px solid #ff0000;
+    color: #5aa1e8;
+}
+
+h2 {
+    text-align: justify;
+    text-align-last: justify;
+    text-justify: distribute;
+    word-spacing: 1vw;
+    font-family: neue-haas-unica, sans-serif;
+    font-weight: 300;
+    font-size: 1.2vw;
+    font-style: normal;
+
+}
+
+h2:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+}
