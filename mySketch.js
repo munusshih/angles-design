@@ -1,3 +1,9 @@
+let currentMouseX = 0
+let pcurrentMouseX = 0
+let currentMouseY = 0
+let pcurrentMouseY = 0
+
+
 function preload() {
 	fontRegular = loadFont('Aleo-Bold.otf');
 	fontLight = loadFont('Artegra_Sans-Extended-SC-500-Medium.otf');
@@ -45,6 +51,31 @@ let n = 0.1
 let k = 0.3
 
 function draw() {
+
+	if(pmouseX < 0){
+		pcurrentMouseX = 0
+	} else {
+		pcurrentMouseX = pmouseX
+	}
+
+	if(pmouseY < 0){
+		pcurrentMouseY = 0
+	} else {
+		pcurrentMouseY = pmouseY
+	}
+
+	if(mouseX < 0){
+		currentMouseX = 0
+	} else {
+		currentMouseX = mouseX
+	}
+
+	if(mouseY <0){
+		currentMouseY = 0
+	}else {
+		currentMouseY = mouseY
+	}
+
 	translate(width / 2-width/10, height / 2 - 100)
 	scale(0.3)
 	frameRate(ratey);
@@ -52,16 +83,16 @@ function draw() {
 	push()
 
 	translate(width / 2, height / 2)
-	if (mouseX != 0) {
-		l = map(mouseX, 50, width - 50, -0.3, 0.5)
-		l += map(mouseY, 50, height - 50, -0.5, 0.5)
+	if (currentMouseX != 0) {
+		l = map(currentMouseX, 50, width - 50, -0.3, 0.5)
+		l += map(currentMouseY, 50, height - 50, -0.5, 0.5)
 	} else {
 		l = 0.1
 	}
-	n = map(mouseY, 50, height - 50, 0.03, 0.1)
-	c = map(mouseY, 50, height - 50, 3, 1)
+	n = map(currentMouseY, 50, height - 50, 0.03, 0.1)
+	c = map(currentMouseY, 50, height - 50, 3, 1)
 
-	rotate(-mouseX / 10 + mouseY / 10)
+	rotate(-currentMouseX / 10 + currentMouseY / 10)
 	rotate(frameCount / 3)
 	// rotate(frameCount/5)
 
@@ -121,7 +152,7 @@ function drawLocation() {
 		textFont(fontLight);
 		push()
 		translate(radx * sin(100), (rady) * cos(100))
-		rotate(-(-mouseX / 10 + mouseY / 10))
+		rotate(-(-currentMouseX / 10 + currentMouseY / 10))
 		rotate(-frameCount / 3)
 		text('x', 0, 0)
 		pop()
@@ -140,9 +171,9 @@ function drawLocation() {
 
 		push()
 		translate(radx * sin(100) + 50, rady * cos(100))
-		rotate(-(-mouseX / 10 + mouseY / 10))
+		rotate(-(-currentMouseX / 10 + currentMouseY / 10))
 		rotate(-frameCount / 3)
-		if ((pmouseX == mouseX) || (pmouseY == mouseY)) {
+		if ((pcurrentMouseX == currentMouseX) || (pcurrentMouseY == currentMouseY)) {
 			text(citynames[i], 0, 0)
 		} else {
 			let randomCity = generateRandomString(int(random(5, 19))) + ',\n' + generateRandomString(int(random(5, 19)))
@@ -152,10 +183,10 @@ function drawLocation() {
 
 		push()
 		translate(radx * sin(100) * 1.1, rady * cos(100) * 1.4 + 100)
-		rotate(-(-mouseX / 10 + mouseY / 10))
+		rotate(-(-currentMouseX / 10 + currentMouseY / 10))
 		rotate(-frameCount / 3)
 		if (i != 0) {
-			if ((pmouseX == mouseX) || (pmouseY == mouseY)) {
+			if ((pcurrentMouseX == currentMouseX) || (pcurrentMouseY == currentMouseY)) {
 				text(threeD[i] + ' \nmiles away', 0, 0)
 			} else {
 				text((random(3) * 1000).toFixed(2) + ' \nmiles away', 0, 0)
@@ -223,9 +254,9 @@ function mousePressed() {
 }
 
 function keyPressed() {
-	if (keyCode === ENTER) {
-		save('stars' + hour() + '_' + minute() + '_' + second() + '.jpg');
-	}
+	// if (keyCode === ENTER) {
+	// 	save('stars' + hour() + '_' + minute() + '_' + second() + '.jpg');
+	// }
 	if (key == '1') {
 		modey = 0
 	} else if (key == '2') {
