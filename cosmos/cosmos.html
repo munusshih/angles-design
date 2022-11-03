@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link id="favicon" rel="icon"
+        href="https://cdn.glitch.com/cbb6d0d6-2bbb-4a1a-aeca-3f2d3a316805%2Ficons8-cursor-24.png"
+        type="image/x-icon" />
+    <link rel="stylesheet" href="https://use.typekit.net/mhd6awk.css">
+    <title>Angles: Cross Perspective in Design | Lecture Series</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="main.css" />
+
+    <!-- import the webpage's javascript file -->
+    <script src="http://momentjs.com/downloads/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@vv1.4.0/lib/p5.js"
+        type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="starbaby"></div>
+    </div>
+
+    <div class="sidebar">
+
+        <!-- mx -->
+        <div class="box"><input type="range" min="0" max="400" value="0"
+                class="pslider" id="mx"></div>
+
+        <!-- my -->
+        <div class="box"><input type="range" min="0" max="400" value="0"
+                class="pslider" id="my"></div>
+
+        <!-- mager -->
+        <div class="box"><input type="range" min="0.2" max="2" value="0.3"
+                step="0.01" class="pslider" id="mager"></div>
+
+        <!-- lineHeight -->
+        <div class="box"><input type="range" min="60" max="150" value="60"
+                class="pslider" id="lineHeighter"></div>
+
+        <form>
+
+            <label for="title">Title:</label>
+            <textarea rows="4" cols="50" type="text" id="title" name="title"
+                oninput="textinput()">
+Angles:
+Cross
+Perspective
+in Design
+            </textarea>
+
+            <label for="host">Host:</label>
+            <input type="text" id="host" name="host" value="Parsons D+T" oninput="textinput()"><br>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" value="Taipei, Taiwan" oninput="textinput()"><br>
+
+            <label for="time">Time:</label>
+            <input type="datetime-local" id="time" name="time" value="2022-10-22T12:00"
+            min="2020-10-22T00:00" max="2024-10-22T00:00" oninput="textinput()"><br>
+
+            <label for="speaker">Speaker:</label>
+            <input type="text" id="speaker" name="speaker" value="Wang Zi Hong" oninput="textinput()"><br>
+        </form>
+
+        <div class="box"><input class="button" type="button"
+                value="spiral/circle" onclick="spiraling()"></div>
+
+        <!-- switches -->
+        <!-- citySwitch -->
+        <div class="box"><label class="switch">cityName:
+                <input type="checkbox" id="cityName" onclick="cityCheck()"
+                    checked>
+                <span class="slider round"></span>
+            </label></div>
+
+        <!-- gridSwitch -->
+        <div class="box"><label class="switch">Text Grid:
+                <input type="checkbox" id="textGrid" onclick="gridCheck()">
+                <span class="slider round"></span>
+            </label></div>
+
+        <!-- color -->
+        <div class="box"><input class="button" type="button" value="yellow"
+                onclick="changeColor('#ffff00')"></div>
+        <div class="box"><input class="button" type="button" value="blue"
+                onclick="changeColor('#5aa1e8')"></div>
+    </div>
+
+</body>
+<!-- <script src="text-align.js"></script> -->
+<script src="sketch2.js" type="text/javascript"></script>
+
+</html>
