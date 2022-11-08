@@ -7,15 +7,17 @@ const starbaby = document.getElementById("starbaby")
 let clientHeight = starbaby.clientWidth * 1.4142;
 let clientWidth = starbaby.clientWidth;
 
-// setups
+// setups --- switches
 let modey = true
 let showCityName = true
-let timezone = "(GMT+5)"
 let textGrid = false
+let circleShow = true
+
+let timezone = "(GMT+5)"
 let colorA = '#5aa1e8';
 let border = 20
 let title = {
-    host:"",
+    host: "",
     title: "",
     location: "",
     speaker: "",
@@ -68,8 +70,8 @@ function textinput() {
 function inputs() {
     const mx = document.getElementById("mx").value
     const my = 400 - document.getElementById("my").value
-    const mager = document.getElementById("mager").value/ 483 * width
-    const lineHeighter = document.getElementById("lineHeighter").value/ 483 * width
+    const mager = document.getElementById("mager").value / 483 * width
+    const lineHeighter = document.getElementById("lineHeighter").value / 483 * width
 
     return {
         mx,
@@ -88,7 +90,7 @@ function draw() {
         lineHeighter
     } = inputs()
 
-    currentMouseX = constrain(mx, 0, mx)
+    currentMouseX = constrain(mx, 0.1, mx)
     currentMouseY = constrain(my, 0, my)
 
     push()
@@ -163,7 +165,7 @@ function drawLocation(mager) {
         let rady = rader * n * l
 
         fill(colorA)
-        textSize(60* 0.3 / mager)
+        textSize(60 * 0.3 / mager)
         textAlign(CENTER)
 
         textFont(fontLight);
@@ -171,20 +173,32 @@ function drawLocation(mager) {
         translate(radx * sin(100), (rady) * cos(100))
         rotate(-(-currentMouseX / 10 + currentMouseY / 10))
         rotate(-frameCount / 3)
-        text('x', 0, 0)
+
+        if (circleShow) {
+            fill('#fff')
+            circle(0, -20 * 0.3 / mager, 20 * 0.3 / mager)
+
+
+            if (i === 0) {
+                fill('#fff')
+                noStroke()
+            } else {
+                noFill()
+                strokeWeight(5 * 0.3 / mager)
+                stroke('#aaa')
+            }
+
+            circle(0, -20 * 0.3 / mager, 100 * 0.3 / mager)
+
+        } else {
+            text('x', 0, 0)
+        }
+
         pop()
 
         textFont(fontRegular);
         textSize(30 * 0.3 / mager)
         textAlign(LEFT)
-
-        const generateRandomString = (num) => {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789<>?!@#$%^&*()_+|\:,.';
-            let result1 = Math.random().toString(36).substring(2, num);
-
-            return result1;
-        }
-
 
         push()
         translate(radx * sin(100) + 50, rady * cos(100))
@@ -255,20 +269,20 @@ function titleText(lineHeighter) {
     textFont("neue-haas-unica")
     textSize(10 / 483 * width)
     textAlign(LEFT)
-    text(title.host, border / 483 * width , (lineHeighter+10))
+    text(title.host, border / 483 * width, (lineHeighter + 10))
 
     push()
     textFont("neue-haas-unica")
     textAlign(RIGHT)
     textSize(10 / 483 * width)
-    text(moment(title.time).format('YYYY')+" Lecture Series", (width-border*5) / 483 * width , (lineHeighter+10))
+    text(moment(title.time).format('YYYY') + " Lecture Series", (width) - border * 1 / 483 * width, (lineHeighter + 10))
     pop()
 
     pop()
 }
 
 function despText() {
-    ctime = moment(title.time).zone('UTC+05:30').format('MMM.*DD*[[]ddd[]] h:mm*a YYYY*')+timezone
+    ctime = moment(title.time).zone('UTC+05:30').format('MMM.*DD*[[]ddd[]] h:mm*a YYYY*') + timezone
 
     displayText = title.speaker.toUpperCase() + ", " + title.location.toUpperCase() + "</br>" + ctime.toUpperCase() + " via*zoom"
 
@@ -276,7 +290,7 @@ function despText() {
     displayText = displayText.replaceAll("*", "  ")
 
     push()
-    textJustify(displayText, 0, height*0.9, 25, 17, "neue-haas-unica")
+    textJustify(displayText, 0, height * 0.9, 25, 17, "neue-haas-unica")
     pop()
 }
 
@@ -324,6 +338,10 @@ function cityCheck() {
 
 function gridCheck() {
     textGrid = !textGrid
+}
+
+function circleCheck() {
+    circleShow = !circleShow
 }
 
 function changeColor(newColor) {

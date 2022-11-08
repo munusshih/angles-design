@@ -29,70 +29,135 @@
 
     <div class="sidebar">
 
-        <!-- mx -->
-        <div class="box"><input type="range" min="0" max="400" value="0"
-                class="pslider" id="mx"></div>
 
-        <!-- my -->
-        <div class="box"><input type="range" min="0" max="400" value="0"
-                class="pslider" id="my"></div>
+        <h1><a href="../index.html">↩</a></h1>
 
-        <!-- mager -->
-        <div class="box"><input type="range" min="0.2" max="2" value="0.3"
-                step="0.01" class="pslider" id="mager"></div>
+        <div class="sidebaby">
 
-        <!-- lineHeight -->
-        <div class="box"><input type="range" min="60" max="150" value="60"
-                class="pslider" id="lineHeighter"></div>
+            <h2>Settings</h2>
 
-        <form>
+            <!-- switches -->
+            <div class="bigbox" id="switches">
 
-            <label for="title">Title:</label>
-            <textarea rows="4" cols="50" type="text" id="title" name="title"
-                oninput="textinput()">
+                <!-- color -->
+                <div class="color">
+                    <input class="button" id="yellow"
+                            type="button"
+                            onclick="changeColor('#ffff00')"><input
+                            class="button" type="button" id="blue"
+                            onclick="changeColor('#5aa1e8')">
+                </div>
+
+                <!-- citySwitch -->
+                <div class="box">
+                    <p>city:</p> <label class="switch">
+                        <input type="checkbox" id="cityName"
+                            onclick="cityCheck()" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <!-- gridSwitch -->
+                <div class="box">
+                    <p>grid: </p><label class="switch">
+                        <input type="checkbox" id="textGrid"
+                            onclick="gridCheck()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <!-- circleSwitch -->
+                <div class="box">
+                    <p>circle: </p><label class="switch">
+                        <input type="checkbox" id="circleGrid" checked
+                            onclick="circleCheck()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="box">
+                    <p>spiral: </p><label class="switch">
+                        <input type="checkbox" id="circleGrid" checked
+                            onclick="spiraling()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <h2>Parameter</h2>
+
+            <!-- mx -->
+            <div class="bigbox">
+                <div class="box">
+                    <p>rotation: </p><input type="range" min="0" max="400"
+                        value="0" class="pslider" id="mx">
+                </div>
+
+                <!-- my -->
+                <div class="box">
+                    <p>raidus: </p><input type="range" min="0" max="400"
+                        value="0" class="pslider" id="my">
+                </div>
+
+                <!-- mager -->
+                <div class="box">
+                    <p>zoom: </p><input type="range" min="0.2" max="2"
+                        value="0.3" step="0.01" class="pslider" id="mager">
+                </div>
+
+                <!-- lineHeight -->
+                <div class="box">
+                    <p>line-height: </p><input type="range" min="60" max="150"
+                        value="60" class="pslider" id="lineHeighter">
+                </div>
+            </div>
+
+            <h2>Typography</h2>
+
+            <div class="bigbox">
+                <div class="box"><label for="title">
+                        <p>title: </p>
+                    </label>
+                    <textarea rows="4" cols="50" type="text" id="title"
+                        name="title" oninput="textinput()">
 Angles:
 Cross
 Perspective
 in Design
-            </textarea>
+            </textarea></div>
 
-            <label for="host">Host:</label>
-            <input type="text" id="host" name="host" value="Parsons D+T" oninput="textinput()"><br>
+                <div class="box"><label for="host">
+                        <p>host: </p>
+                    </label>
+                    <input type="text" id="host" name="host" value="Parsons D+T"
+                        oninput="textinput()"><br></div>
 
-            <label for="location">Location:</label>
-            <input type="text" id="location" name="location" value="Taipei, Taiwan" oninput="textinput()"><br>
+                <div class="box"><label for="location">
+                        <p>location: </p>
+                    </label>
+                    <input type="text" id="location" name="location"
+                        value="Taipei, Taiwan" oninput="textinput()"><br></div>
 
-            <label for="time">Time:</label>
-            <input type="datetime-local" id="time" name="time" value="2022-10-22T12:00"
-            min="2020-10-22T00:00" max="2024-10-22T00:00" oninput="textinput()"><br>
+                <div class="box"><label for="time">
+                        <p>date/time: </p>
+                    </label>
+                    <input type="datetime-local" id="time" name="time"
+                        value="2022-10-22T12:00" min="2020-10-22T00:00"
+                        max="2024-10-22T00:00" oninput="textinput()"><br></div>
 
-            <label for="speaker">Speaker:</label>
-            <input type="text" id="speaker" name="speaker" value="Wang Zi Hong" oninput="textinput()"><br>
-        </form>
+                <div class="box"><label for="speaker">
+                        <p>speaker: </p>
+                    </label>
+                    <input type="text" id="speaker" name="speaker"
+                        value="Wang Zi Hong" oninput="textinput()"><br></div>
 
-        <div class="box"><input class="button" type="button"
-                value="spiral/circle" onclick="spiraling()"></div>
-
-        <!-- switches -->
-        <!-- citySwitch -->
-        <div class="box"><label class="switch">cityName:
-                <input type="checkbox" id="cityName" onclick="cityCheck()"
-                    checked>
-                <span class="slider round"></span>
-            </label></div>
-
-        <!-- gridSwitch -->
-        <div class="box"><label class="switch">Text Grid:
-                <input type="checkbox" id="textGrid" onclick="gridCheck()">
-                <span class="slider round"></span>
-            </label></div>
-
-        <!-- color -->
-        <div class="box"><input class="button" type="button" value="yellow"
-                onclick="changeColor('#ffff00')"></div>
-        <div class="box"><input class="button" type="button" value="blue"
-                onclick="changeColor('#5aa1e8')"></div>
+            </div>
+        </div>
     </div>
+    </div>
+
+    <footer>munus shih design/developed</footer>
 
 </body>
 <!-- <script src="text-align.js"></script> -->
