@@ -6,6 +6,8 @@
         href="https://cdn.glitch.com/cbb6d0d6-2bbb-4a1a-aeca-3f2d3a316805%2Ficons8-cursor-24.png"
         type="image/x-icon" />
     <link rel="stylesheet" href="https://use.typekit.net/mhd6awk.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Angles: Cross Perspective in Design | Lecture Series</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,7 +25,7 @@
 
 <body>
 
-    <div class="container">
+    <div id="container">
         <div id="starbaby"></div>
     </div>
 
@@ -34,18 +36,24 @@
 
         <div class="sidebaby">
 
+            <div class="bigbox">
+            <div class="download" onclick="save()">download</div>
+            <div class="randomize" onclick="randomize()">randomize me! <i
+                    class="fa fa-random" style="font-size:12px"></i></div>
+                </div>
+
             <h2>Settings</h2>
 
             <!-- switches -->
             <div class="bigbox" id="switches">
 
                 <!-- color -->
+                <p>color:</p>
                 <div class="color">
-                    <input class="button" id="yellow"
-                            type="button"
-                            onclick="changeColor('#ffff00')"><input
-                            class="button" type="button" id="blue"
-                            onclick="changeColor('#5aa1e8')">
+                    <input class="button" id="yellow" type="button"
+                        onclick="changeColor('#ffff00')">
+                    <input class="button" type="button" id="bluer"
+                        onclick="changeColor('#5aa1e8')">
                 </div>
 
                 <!-- citySwitch -->
@@ -60,7 +68,7 @@
                 <!-- gridSwitch -->
                 <div class="box">
                     <p>grid: </p><label class="switch">
-                        <input type="checkbox" id="textGrid"
+                        <input type="checkbox" id="textGrider"
                             onclick="gridCheck()">
                         <span class="slider round"></span>
                     </label>
@@ -77,7 +85,7 @@
 
                 <div class="box">
                     <p>spiral: </p><label class="switch">
-                        <input type="checkbox" id="circleGrid" checked
+                        <input type="checkbox" id="spiraling" checked
                             onclick="spiraling()">
                         <span class="slider round"></span>
                     </label>
@@ -90,26 +98,48 @@
             <!-- mx -->
             <div class="bigbox">
                 <div class="box">
-                    <p>rotation: </p><input type="range" min="0" max="400"
-                        value="0" class="pslider" id="mx">
+                    <p>rotation: </p>
+                    <div class="wcontainer"><input type="range" min="0"
+                            max="400" value="0" class="pslider" id="mx"></div>
                 </div>
 
                 <!-- my -->
                 <div class="box">
-                    <p>raidus: </p><input type="range" min="0" max="400"
-                        value="0" class="pslider" id="my">
+                    <p>raidus: </p>
+                    <div class="wcontainer"><input type="range" min="0"
+                            max="400" value="0" class="pslider" id="my"></div>
                 </div>
 
                 <!-- mager -->
                 <div class="box">
-                    <p>zoom: </p><input type="range" min="0.2" max="2"
-                        value="0.3" step="0.01" class="pslider" id="mager">
+                    <p>offset X: </p>
+                    <div class="wcontainer"><input type="range" min="-500"
+                            max="100" value="-500" class="pslider"
+                            id="offX"></div>
+                </div>
+
+                <!-- mager -->
+                <div class="box">
+                    <p>offset Y: </p>
+                    <div class="wcontainer"><input type="range" min="-500"
+                            max="100" value="-500" class="pslider"
+                            id="offY"></div>
+                </div>
+
+                <!-- mager -->
+                <div class="box">
+                    <p>zoom: </p>
+                    <div class="wcontainer"><input type="range" min="0.2"
+                            max="2" value="0.2" step="0.01" class="pslider"
+                            id="mager"></div>
                 </div>
 
                 <!-- lineHeight -->
                 <div class="box">
-                    <p>line-height: </p><input type="range" min="60" max="150"
-                        value="60" class="pslider" id="lineHeighter">
+                    <p>line-height: </p>
+                    <div class="wcontainer"><input type="range" min="60"
+                            max="150" value="60" class="pslider"
+                            id="lineHeighter"></div>
                 </div>
             </div>
 

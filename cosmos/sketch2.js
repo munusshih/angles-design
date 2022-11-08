@@ -4,14 +4,23 @@ let currentMouseY = 0
 
 // canvas
 const starbaby = document.getElementById("starbaby")
+const container = document.getElementById("container")
+
 let clientHeight = starbaby.clientWidth * 1.4142;
 let clientWidth = starbaby.clientWidth;
+
+container.clientWidth = clientWidth
+container.clientHeight = clientHeight
 
 // setups --- switches
 let modey = true
 let showCityName = true
 let textGrid = false
 let circleShow = true
+let mx,
+    my,
+    mager,
+    lineHeighter, offfX, offfY
 
 let timezone = "(GMT+5)"
 let colorA = '#5aa1e8';
@@ -68,27 +77,17 @@ function textinput() {
 }
 
 function inputs() {
-    const mx = document.getElementById("mx").value
-    const my = 400 - document.getElementById("my").value
-    const mager = document.getElementById("mager").value / 483 * width
-    const lineHeighter = document.getElementById("lineHeighter").value / 483 * width
-
-    return {
-        mx,
-        my,
-        mager,
-        lineHeighter
-    }
+    mx = document.getElementById("mx").value
+    my = 400 - document.getElementById("my").value
+    offfX = document.getElementById("offX").value / 483 * width
+    offfY = document.getElementById("offY").value / 483 * width
+    mager = document.getElementById("mager").value / 483 * width
+    lineHeighter = document.getElementById("lineHeighter").value / 483 * width
 }
 
 function draw() {
 
-    const {
-        mx,
-        my,
-        mager,
-        lineHeighter
-    } = inputs()
+    inputs()
 
     currentMouseX = constrain(mx, 0.1, mx)
     currentMouseY = constrain(my, 0, my)
@@ -99,7 +98,8 @@ function draw() {
     scale(mager)
 
     push()
-    translate(width / 2, height / 2)
+    translate(width / 2 + offfX, height / 2 + offfY)
+
     if (currentMouseX != 0) {
         l = map(currentMouseX, 50, width - 50, -0.3, 0.5)
         l += map(currentMouseY, 50, height - 50, -0.5, 0.5)
@@ -318,7 +318,18 @@ function textJustify(a, x, y, lineHeighter, sizer, fonter) {
             stroke(colorA)
 
             if (textGrid) {
-                rect(border + spacing * j + sum, border + yOffset + y, textWidth(d), sizer)
+
+                if (fonter === "neue-haas-unica") {
+                    rect(border + spacing * j + sum,
+                        border + yOffset + y - 16,
+                        textWidth(d),
+                        sizer)
+                } else {
+                    rect(border + spacing * j + sum,
+                        border + yOffset + y,
+                        textWidth(d),
+                        sizer)
+                }
             }
 
             sum += textWidth(d)
@@ -346,4 +357,33 @@ function circleCheck() {
 
 function changeColor(newColor) {
     colorA = newColor
+}
+
+function randomize() {
+    modey = Math.random() < 0.5;
+    showCityName = Math.random() < 0.5;
+    // textGrid = Math.random() < 0.5;
+    circleShow = Math.random() < 0.5;
+
+    interfaceChanges("mx")
+    interfaceChanges("my")
+    interfaceChanges("offX")
+    interfaceChanges("offY")
+    interfaceChanges("mager")
+    interfaceChanges("lineHeighter")
+
+    // mx = document.getElementById("mx").value
+    // my = 400 - document.getElementById("my").value
+    // mager = document.getElementById("mager").value / 483 * width
+    // lineHeighter = document.getElementById("lineHeighter").value / 483 * width
+
+    document.getElementById("spiraling").checked = modey
+    document.getElementById("cityName").checked = showCityName
+    document.getElementById("circleGrid").checked = circleShow
+    // document.getElementById("textGrider").checked = textGrid
+}
+
+function interfaceChanges(stringer){
+
+    document.getElementById(stringer).value = parseFloat(document.getElementById(stringer).min) + Math.random() * parseFloat(abs(document.getElementById(stringer).max - document.getElementById(stringer).min))
 }
