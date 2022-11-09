@@ -1,4 +1,3 @@
-var moment = require('moment');
 
 // mouse interaction
 let currentMouseX = 0
