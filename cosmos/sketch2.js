@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 // mouse interaction
 let currentMouseX = 0
 let currentMouseY = 0
@@ -36,7 +38,7 @@ const palette = ["#616161", "#9e9e9e", "#636363", "#8f8f8f", "#949494"]
 const rings = ["#a6a6a6", "#ffffff", "#bababa", "#a3a3a3", "#b5b5b5", "#b8b8b8"]
 
 // cities
-let ratey = 30
+let ratey = 15
 let rad = 10
 let n = 0.1
 let k = 0.3
